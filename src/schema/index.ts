@@ -1,4 +1,5 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
+import { ADD_MOVIE } from "../mutation/movie";
 import { GET_MOVIE_BY_ID } from "../query/movie";
 
 const RootQuery = new GraphQLObjectType({
@@ -10,10 +11,12 @@ const RootQuery = new GraphQLObjectType({
 
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
-  fields: {},
+  fields: {
+    addMovie: ADD_MOVIE,
+  },
 });
 
 export const schema = new GraphQLSchema({
   query: RootQuery,
-  // mutation: Mutation,
+  mutation: Mutation,
 });
