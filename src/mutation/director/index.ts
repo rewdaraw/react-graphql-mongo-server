@@ -35,3 +35,13 @@ export const UPDATE_DIRECTOR = {
     });
   },
 };
+
+export const DELETE_DIRECTOR = {
+  type: DirectorType,
+  args: {
+    id: { type: GraphQLNonNull(GraphQLID) },
+  },
+  resolve(parent: any, args: any) {
+    return DirectorModel.findByIdAndDelete(args.id);
+  },
+};

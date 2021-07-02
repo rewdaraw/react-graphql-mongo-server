@@ -36,3 +36,13 @@ export const UPDATE_MOVIE = {
     return Movie.findByIdAndUpdate(args.id, movie, { new: true });
   },
 };
+
+export const DELETE_MOVIE = {
+  type: MovieType,
+  args: {
+    id: { type: GraphQLNonNull(GraphQLID) },
+  },
+  resolve(parent: any, args: any) {
+    return Movie.findByIdAndDelete(args.id);
+  },
+};
