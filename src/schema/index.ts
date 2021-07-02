@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { ADD_DIRECTOR } from "../mutation/director";
-import { ADD_MOVIE } from "../mutation/movie";
+import { ADD_DIRECTOR, UPDATE_DIRECTOR } from "../mutation/director";
+import { ADD_MOVIE, UPDATE_MOVIE } from "../mutation/movie";
 import { GET_ALL_DIRECTORS, GET_DIRECTOR_BY_ID } from "../query/director";
 import { GET_ALL_MOVIES, GET_MOVIE_BY_ID } from "../query/movie";
 
@@ -18,7 +18,9 @@ const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
     addMovie: ADD_MOVIE,
+    updateMovie: UPDATE_MOVIE,
     addDirector: ADD_DIRECTOR,
+    updateDirector: UPDATE_DIRECTOR,
   },
 });
 

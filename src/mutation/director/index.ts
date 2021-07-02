@@ -1,4 +1,4 @@
-import { GraphQLInt, GraphQLString } from "graphql";
+import { GraphQLID, GraphQLInt, GraphQLNonNull, GraphQLString } from "graphql";
 import { DirectorModel } from "../../model/director";
 import { DirectorType } from "../../type/director";
 
@@ -15,5 +15,23 @@ export const ADD_DIRECTOR = {
     });
 
     return director.save();
+  },
+};
+
+export const UPDATE_DIRECTOR = {
+  type: DirectorType,
+  args: {
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    name: { type: GraphQLString },
+    age: { type: GraphQLInt },
+  },
+  resolve(parent: any, args: any) {
+    let updateDirector: any = {};
+    args.name && (updateDirector.name = args.name);
+    args.age && (updateDirector.age = args.age);
+
+    return DirectorModel.findByIdAndUpdate(args.id, updateDirector, {
+      new: true,
+    });
   },
 };
