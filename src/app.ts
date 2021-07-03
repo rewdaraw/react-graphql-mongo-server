@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
-// import cors from "cors"
+import cors from "cors"
 import { graphqlHTTP } from "express-graphql";
 import mongoose from "mongoose";
 import { schema } from "./schema/index";
@@ -17,7 +17,7 @@ mongoose.connection.once("open", () => {
 });
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 
 app.listen(4000, () => {
   console.log("-----------------------");
